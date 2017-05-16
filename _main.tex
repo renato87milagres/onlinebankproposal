@@ -1,0 +1,100 @@
+\documentclass[
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel.
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{classes/TexTemplate}
+	
+% Pacotes fundamentais
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{caption}
+
+% Pacotes adicionais
+\usepackage{fixltx2e}			% sub escrito
+\usepackage{amsmath}			% matematico
+\usepackage{amsfonts}			% fontes matematicas
+\usepackage{amssymb}			% simbolos matematicos
+\usepackage{subfig}
+\usepackage{blindtext}
+\usepackage{listings}
+\usepackage{listingsutf8}
+
+% Informações de dados para CAPA e FOLHA DE ROSTO
+\titulo{TRABALHO}
+\autor{Renan Pereira Araújo}
+\local{Local}
+\data{Data}
+\orientador{Professor}
+%\coorientador{Co-orientador} % se não existir, comente essa linha
+\instituicao{%
+  Universidade Federal de São João del-Rei -- UFSJ
+  \par
+  Bacharelado em Ciência da Computação}
+
+% Configuracao de inline enumerate
+\newlist{inlinelist}{enumerate*}{1}
+\setlist*[inlinelist,1]{%
+  label=(\roman*),
+}
+
+% Configurações de aparência do PDF
+\definecolor{blue}{RGB}{41,5,195}
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title},
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2},
+		colorlinks=true,
+    	linkcolor=blue,
+    	citecolor=blue,
+    	filecolor=magenta,
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% compila o indice
+\makeindex
+% ---
+
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+
+\pretextual
+
+\imprimircapa
+
+% Sumário
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+\textual
+\include{01_documento-de-visao}
+\include{02_casos-de-uso}
+\include{03_sistema}
+\include{04_conclusao}
+
+\end{document}
