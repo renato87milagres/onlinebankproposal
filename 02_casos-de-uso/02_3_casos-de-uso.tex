@@ -1,8 +1,8 @@
 \section{Acompanhar Lançamentos}
 
-\subsection{Caso de uso descritivo}
-
 Este caso de uso tem como função permitir que o usuário consiga acompanhar os lançamentos realizados em sua conta.
+
+\subsection{Caso de uso descritivo}
 
 \begin{table}[h]
   \centering
@@ -53,9 +53,10 @@ Este caso de uso tem como função permitir que o usuário consiga acompanhar os
 
 \section{Realizar compra no cartão de crédito}
 
-\subsection{Caso de uso descritivo}
-
 Este caso de uso tem como função permitir que o usuário consiga realizar uma compra utilizando seu cartão de crédito.
+Após realizar a compra no cartão de cédito, o usuário é notificado por SMS, que está sendo descrito na seção \ref{sec}
+
+\subsection{Caso de uso descritivo}
 
 \begin{table}[h]
   \centering
@@ -92,8 +93,6 @@ Este caso de uso tem como função permitir que o usuário consiga realizar uma 
 
   Após o passo 8 do fluxo de eventos principal:
   \subitem A máquina leitora, ao receber a resposta de sucesso exibe a mensagem sucesso ao operador e imprimindo o comprovante.
-
-
 \end{itemize}
 
 \subsection{Diagrama de caso de uso}
@@ -108,9 +107,9 @@ Este caso de uso tem como função permitir que o usuário consiga realizar uma 
 
 \section{Bloquear cartão}
 
-\subsection{Caso de uso descritivo}
-
 Este caso de uso tem como função permitir que o usuário consiga bloquear o cartão associado a sua conta.
+
+\subsection{Caso de uso descritivo}
 
 \begin{table}[h]
   \centering
@@ -145,6 +144,142 @@ Este caso de uso tem como função permitir que o usuário consiga bloquear o ca
      \centering
      \includegraphics[scale=0.6]{diagramas/caso-de-uso/imagens/bloquearCartao.png}
      \caption{Caso de uso Bloquear cartão}
+\end{figure}
+
+\subsection{Diagrama de classes para o caso de uso}
+
+\section{Efetuar saque}
+
+Este caso de uso tem como função permitir que o usuário efetue um saque com ou sem cartão em caixas 24 horas.
+
+\subsection{Caso de uso descritivo}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|p{4cm} | p{10cm} |}
+      \hline
+      \small{\textbf{Requisitos Não Funcionais Associados}}	& Tempo de acesso, segurança, interface amigável e acessível	\\ \hline
+      \small{\textbf{Pré-condição}}	&	O usuário deve ser cliente do banco, possuir uma conta ativa e ter um saldo mínimo para saque	\\ \hline
+      \small{\textbf{Pós-condição}}	&	O saldo da conta do usuário será decrescido do valor do saque e o usuário terá o saque efetuado	\\ \hline
+    \end{tabular}
+ \captionof{table}{Condições para o caso de uso Efetuar saque}
+\end{table}
+
+\textbf{Fluxo de eventos principal:}
+
+\begin{enumerate}
+  \item O usuário acessa o sistema utilizando suas credenciais.
+  \item O sistema realiza a validação dos dados informados.
+  \item O usuário seleciona a opção ``Saque''.
+  \item O sistema exibe um campo para que o usuário possa inserir o valor do saque a ser realizado.
+  \item O usuário insere o valor desejado.
+  \item O sistema solicita ao usuário a confirmação de alguns dados.
+  \item O sistema realiza a validação dos dados.
+  \item O sistema realiza uma consulta no saldo do usuário para saber se o valor do saque é menor ou igual ao valor total do saldo disponível na conta do usuário.
+    \subitem Se o usuário inserir um valor maior do que o saldo total da conta, a máquina de fachada exibe a mensagem ``Saldo insuficiente'' e solicita ao usuário que digite outro valor.
+    \subitem Se o usuário possuir saldo suficiente, a máquina de fachada exibe a mensagem ``Aguarde, contando cédulas''.
+  \item O sistema exibe a mensagem ``Retire seu dinheiro''.
+  \item O usuário retira o dinheiro e encerra a operação.
+\end{enumerate}
+
+\textbf{Fluxos secundários:}
+
+\begin{itemize}
+  \item \textbf{Fluxo secundário – Efetuar saque utilizando biometria}
+
+  No passo 1 do fluxo de eventos principal:
+  \subitem O sistema exibirá uma mensagem informando ao usuário para utilizar a biometria.
+
+  \item \textbf{Fluxo secundário – Efetuar saque sem cartão}
+  Pré-condição: Ter habilitado o saque sem cartão em sua conta.
+
+  No passo 1 do fluxo de eventos principal:
+  \subitem O usuário informa os dados pessoais solicitados para validação.
+
+\end{itemize}
+
+\subsection{Diagrama de caso de uso}
+
+\begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.6]{diagramas/caso-de-uso/imagens/efetuarSaque.png}
+     \caption{Caso de uso Efetuar saque}
+\end{figure}
+
+\subsection{Diagrama de classes para o caso de uso}
+
+\section{Receber notificações via SMS}
+
+Este caso de uso tem como função notificar o usuário sobre movimentações feitas em sua conta através de SMS.
+
+\subsection{Caso de uso descritivo}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|p{4cm} | p{10cm} |}
+      \hline
+      \small{\textbf{Requisitos Não Funcionais Associados}}	& Tempo de envio, segurança	\\ \hline
+      \small{\textbf{Pré-condição}}	&	O usuário deve efetuar alguma movimentação em sua conta e deve ter habilitada a notificação via SMS	\\ \hline
+      \small{\textbf{Pós-condição}}	&	O usuário será notificado da movimentação feita em sua conta	\\ \hline
+    \end{tabular}
+ \captionof{table}{Condições para o caso de uso Receber notificações via SMS}
+\end{table}
+
+\textbf{Fluxo de eventos principal:}
+
+\begin{enumerate}
+  \item O usuário realiza alguma movimentação em sua conta.
+  \item O sistema detecta que houve uma movimentação na conta do cliente.
+  \item O sistema envia um SMS informando sobre a movimentação realizada na conta do cliente.
+\end{enumerate}
+
+\subsection{Diagrama de caso de uso}
+
+\begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.6]{diagramas/caso-de-uso/imagens/receberNotificacaoSms.png}
+     \caption{Caso de uso Efetuar saque}
+\end{figure}
+
+\subsection{Diagrama de classes para o caso de uso}
+
+\section{Usar programa de milhas}
+
+Este caso de uso tem como função permitir que o usuário utilize o programa de milhas para resgatar prêmios.
+
+\subsection{Caso de uso descritivo}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|p{4cm} | p{10cm} |}
+      \hline
+      \small{\textbf{Requisitos Não Funcionais Associados}}	& Segurança, interface amigável e acessível, sistema de entregas ligado aos correios	\\ \hline
+      \small{\textbf{Pré-condição}}	&	O usuário deve estar realizando o cartão na função crédito continuamente	\\ \hline
+      \small{\textbf{Pós-condição}}	&	O usuário receberá o prêmio selecionado tendo seu saldo de milhas decrescido do valor do prêmio	\\ \hline
+    \end{tabular}
+ \captionof{table}{Condições para o caso de uso Usar programa de milhas}
+\end{table}
+
+\textbf{Fluxo de eventos principal:}
+
+\begin{enumerate}
+  \item O usuário acessa o sistema utilizando suas credenciais.
+  \item O sistema realiza a validação dos dados informados.
+  \item O usuário seleciona a opção ``Utilizar programa de milhas''.
+  \item O sistema exibe as opções de prêmios que o usuário pode resgatar com as milhas acumuladas.
+  \item O usuário seleciona o prêmio desejado.
+  \item O sistema verifica se o cliente possui milhas suficientes para resgatar o prêmio selecionado.
+  \item Tendo validado, o sistema decresce o valor referente ao prêmio selecionado do saldo de milhas do cliente e viabiliza o resgate.
+  \item Após a viabilização, o sistema de envios é informado que deve enviar o prêmio selecionado para o endereço do cliente.
+  \item O sistema informa que o prêmio está a caminho do endereço do usuário.
+\end{enumerate}
+
+\subsection{Diagrama de caso de uso}
+
+\begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.6]{diagramas/caso-de-uso/imagens/utilizarProgramaMilhas.png}
+     \caption{Caso de uso Usar programa de milhas}
 \end{figure}
 
 \subsection{Diagrama de classes para o caso de uso}
