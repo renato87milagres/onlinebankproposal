@@ -1,0 +1,30 @@
+// Entidades
+[Usuario|-nome:string;-dataNascimento:DateTime;-sexo:char;-endereco:string;-email:string;-telefone:string;-celular:string;-RG:string;-CPF:string;-rendMensal:money;-profissao:string|getters and setters]-[note:Entidade Usuário{bg:orange]
+
+[Conta|-numeroConta:unsignedLong;-tipoConta:int;-codigoAgencia:int;|getters and setters]-[note:Entidade Conta{bg:orange]
+
+[Cartao|-tipo:int;-numero:unsignedLong;-vencimento:DateTime;-digitoVerificador:unsignedShort;-codigoBandeira:int|getters and setters]-[note:Entidade Cartão{bg:orange]
+
+[PremioMilhas|-codigoPremio:int;-valor:int;-nome:string;-descricao:string;|getters and setters]-[note:Entidade Prêmio Milhas{bg:orange]
+
+// Relacionamento entre as entidades
+[Conta]1..*-1[Usuario]
+[Conta]1-1..*[Cartao]
+// Controles
+[MilhasController|usuarioLogado:Usuario;...|resgatarPremio(Premio: premio);...]-[note:Controle de Milhas{bg:green]
+[CartaoController|usuarioLogado:Usuario;...|bloquearCartao(Cartao: cartao);realizarCompra(Cartao: cartao);...]-[note:Controle de Cartão{bg:green]
+[LancamentoController|usuarioLogado:Usuario;...|consultarLancamentos(Conta: conta);...]-[note:Controle de Lançamentos{bg:green]
+[TransacaoController|usuarioLogado:Usuario;...|efetuarSaque(Cartao: cartao);efetuarSaque();efetuarMovimentacao();...]-[note:Controle de Transação{bg:green]
+[NotificacaoController|...|notificarCliente(Usuario:usuario string:mensagem);]-[note:Controle de Notificação{bg:green]
+
+// Uso de entidades pelos controles
+[CartaoController]-.->[Cartao]
+[CartaoController]-.->[Usuario]
+[MilhasController]-.->[PremioMilhas]
+[MilhasController]-.->[Conta]
+[MilhasController]-.->[Usuario]
+[LancamentoController]-.->[Conta]
+[LancamentoController]-.->[Usuario]
+[TransacaoController]-.->[Cartao]
+[TransacaoController]-.->[Usuario]
+[TransacaoController]-.->[NotificacaoController]
