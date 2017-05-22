@@ -4,6 +4,8 @@ Este caso de uso tem como função permitir que o usuário consiga acompanhar os
 
 \subsection{Caso de uso descritivo}
 
+As condições para esse caso de uso são apontados na Tabela \ref{tab:acompanharLancamento}.
+
 \begin{table}[h]
   \centering
   \begin{tabular}{|p{4cm} | p{10cm} |}
@@ -13,6 +15,7 @@ Este caso de uso tem como função permitir que o usuário consiga acompanhar os
       \small{\textbf{Pós-condição}}	&	O usuário visualiza os lançamentos realizados de acordo com o filtro aplicado	\\ \hline
     \end{tabular}
  \captionof{table}{Condições para o caso de uso Acompanhar Lançamentos}
+ \label{tab:acompanharLancamento}
 \end{table}
 
 \textbf{Fluxo de eventos principal:}
@@ -70,6 +73,8 @@ Após realizar a compra no cartão de cédito, o usuário é notificado por SMS,
 
 \subsection{Caso de uso descritivo}
 
+As condições para esse caso de uso são apontados na Tabela \ref{tab:compraCartao}.
+
 \begin{table}[h]
   \centering
   \begin{tabular}{|p{4cm} | p{10cm} |}
@@ -79,6 +84,7 @@ Após realizar a compra no cartão de cédito, o usuário é notificado por SMS,
       \small{\textbf{Pós-condição}}	&	A compra é realizada com sucesso e o valor da fatura é acrescido do valor da compra	\\ \hline
     \end{tabular}
  \captionof{table}{Condições para o caso de uso Realizar compra no cartão de crédito}
+ \label{tab:compraCartao}
 \end{table}
 
 \textbf{Fluxo de eventos principal:}
@@ -135,6 +141,8 @@ Este caso de uso tem como função permitir que o usuário consiga bloquear o ca
 
 \subsection{Caso de uso descritivo}
 
+As condições para esse caso de uso são apontados na Tabela \ref{tab:bloquearCartao}.
+
 \begin{table}[h]
   \centering
   \begin{tabular}{|p{4cm} | p{10cm} |}
@@ -144,6 +152,7 @@ Este caso de uso tem como função permitir que o usuário consiga bloquear o ca
       \small{\textbf{Pós-condição}}	&	O usuário terá o cartão bloqueado e não poderá utilizá-lo para movimentações bancárias	\\ \hline
     \end{tabular}
  \captionof{table}{Condições para o caso de uso Bloquear cartão}
+ \label{tab:bloquearCartao}
 \end{table}
 
 \textbf{Fluxo de eventos principal:}
@@ -190,6 +199,8 @@ Este caso de uso tem como função permitir que o usuário efetue um saque com o
 
 \subsection{Caso de uso descritivo}
 
+As condições para esse caso de uso são apontados na Tabela \ref{tab:efetuarSaque}.
+
 \begin{table}[h]
   \centering
   \begin{tabular}{|p{4cm} | p{10cm} |}
@@ -199,6 +210,7 @@ Este caso de uso tem como função permitir que o usuário efetue um saque com o
       \small{\textbf{Pós-condição}}	&	O saldo da conta do usuário será decrescido do valor do saque e o usuário terá o saque efetuado	\\ \hline
     \end{tabular}
  \captionof{table}{Condições para o caso de uso Efetuar saque}
+ \label{tab:efetuarSaque}
 \end{table}
 
 \textbf{Fluxo de eventos principal:}
@@ -247,12 +259,23 @@ O diagrama para o caso de uso Efetuar Saque pode ser visualizado na Figura \ref{
 
 \subsection{Diagrama de classes para o caso de uso}
 
+O diagrama de classes para o caso de uso Efetuar saque pode ser visualizado na Figura \ref{ddc:efetuarSaque}.
+
+\begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.5]{diagramas/diagrama-de-classe/imagens/efetuarSaque.png}
+     \caption{Diagrama de classes para o caso de uso Efetuar saque}
+     \label{ddc:efetuarSaque}
+\end{figure}
+
 \section{Receber notificações via SMS}
 \label{sec:ReceberSMS}
 
 Este caso de uso tem como função notificar o usuário sobre movimentações feitas em sua conta através de SMS.
 
 \subsection{Caso de uso descritivo}
+
+As condições para esse caso de uso são apontados na Tabela \ref{tab:notificacaoSMS}.
 
 \begin{table}[h]
   \centering
@@ -263,6 +286,7 @@ Este caso de uso tem como função notificar o usuário sobre movimentações fe
       \small{\textbf{Pós-condição}}	&	O usuário será notificado da movimentação feita em sua conta	\\ \hline
     \end{tabular}
  \captionof{table}{Condições para o caso de uso Receber notificações via SMS}
+ \label{tab:notificacaoSMS}
 \end{table}
 
 \textbf{Fluxo de eventos principal:}
@@ -275,22 +299,33 @@ Este caso de uso tem como função notificar o usuário sobre movimentações fe
 
 \subsection{Diagrama de caso de uso}
 
-O diagrama para o caso de uso Efetuar saque pode ser visualizado na Figura \ref{cdu:efetuarSaque}.
+O diagrama para o caso de uso Receber notificações via SMS pode ser visualizado na Figura \ref{cdu:notificacao}.
 
 \begin{figure}[!htb]
      \centering
      \includegraphics[scale=0.6]{diagramas/caso-de-uso/imagens/receberNotificacaoSms.png}
-     \caption{Caso de uso Efetuar saque}
-     \label{cdu:efetuarSaque}
+     \caption{Caso de uso Receber notificações via SMS}
+     \label{cdu:notificacao}
 \end{figure}
 
 \subsection{Diagrama de classes para o caso de uso}
+
+O diagrama de classes para o caso de uso Receber notificações via SMS pode ser visualizado na Figura \ref{ddc:notificacao}.
+
+\begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.5]{diagramas/diagrama-de-classe/imagens/notificacao.png}
+     \caption{Diagrama de classes para o caso de uso Receber notificações via SMS}
+     \label{ddc:notificacao}
+\end{figure}
 
 \section{Usar programa de milhas}
 
 Este caso de uso tem como função permitir que o usuário utilize o programa de milhas para resgatar prêmios.
 
 \subsection{Caso de uso descritivo}
+
+As condições para esse caso de uso são apontados na Tabela \ref{tab:milhas}.
 
 \begin{table}[h]
   \centering
@@ -301,6 +336,7 @@ Este caso de uso tem como função permitir que o usuário utilize o programa de
       \small{\textbf{Pós-condição}}	&	O usuário receberá o prêmio selecionado tendo seu saldo de milhas decrescido do valor do prêmio	\\ \hline
     \end{tabular}
  \captionof{table}{Condições para o caso de uso Usar programa de milhas}
+ \label{tab:milhas}
 \end{table}
 
 \textbf{Fluxo de eventos principal:}
@@ -329,3 +365,12 @@ O diagrama para o caso de uso Usar programa de milhas pode ser visualizado na Fi
 \end{figure}
 
 \subsection{Diagrama de classes para o caso de uso}
+
+O diagrama de classes para o caso de uso Usar programa de milhas pode ser visualizado na Figura \ref{ddc:milhas}.
+
+\begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.5]{diagramas/diagrama-de-classe/imagens/milhas.png}
+     \caption{Diagrama de classes para o caso de uso Usar programa de milhas}
+     \label{ddc:notificacao}
+\end{figure}

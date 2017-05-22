@@ -1,0 +1,12 @@
+// Entidades
+[Usuario|-nome:string;-dataNascimento:DateTime;-sexo:char;-endereco:string;-email:string;-telefone:string;-celular:string;-RG:string;-CPF:string;-rendMensal:money;-profissao:string|getters and setters]-[note:Entidade Usuário{bg:orange]
+
+// Relacionamento entre as entidades
+
+// Controles
+[TransacaoController|usuarioLogado:Usuario;...|efetuarMovimentacao();...]-[note:Controle de Transação{bg:green]
+[NotificacaoController|...|notificarCliente(Usuario:usuario string:mensagem);]-[note:Controle de Notificação{bg:green]
+
+// Uso de entidades pelos controles
+[NotificacaoController]-.->[Usuario]
+[TransacaoController]-.->[NotificacaoController]
