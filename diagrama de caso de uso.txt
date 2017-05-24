@@ -1,0 +1,6 @@
+[Usuário]- Valida acesso internet Banking
+[Usuário]- Empréstimos
+[Usuário]- Acesso deficiente
+[Usuário]- Cadastro Biometria
+[Usuário]- Alterar Biometria
+[Usuário]- Demonstrativo IR
